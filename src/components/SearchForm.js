@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../css/SearchForm.css';
 
 class SearchForm extends Component {
  constructor(props) {
@@ -20,7 +21,7 @@ class SearchForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className="search-form" onSubmit={this.handleSubmit}>
         <label>
           <input type="text" value={this.state.value} onChange={this.handleChange} />
         </label>
