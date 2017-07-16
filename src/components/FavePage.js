@@ -7,7 +7,6 @@ class FavePage extends Component {
   render () {
     return (
       <div className="FavePage">
-      <h3>FavePage component</h3>
       <NavBar />
       <SearchForm />
       <List />
