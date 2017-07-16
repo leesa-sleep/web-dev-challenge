@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
+import List from './List';
+import PropTypes from 'prop-types';
+import * as actions from '../actions/index.js';
+import {connect} from 'react-redux';
 import '../css/SearchForm.css';
 
 class SearchForm extends Component {
+  componentDidMount () {
+    this.props.fetchRecipes(this.state.value);
+  }
  constructor(props) {
     super(props);
     this.state = {value: ''};
@@ -15,20 +22,40 @@ class SearchForm extends Component {
   }
 
   handleSubmit(event) {
-    console.log('An ingredient was submitted: ' + this.state.value);
+  let ingredient = this.state.value;
     event.preventDefault();
+    if (ingredient === '') {
+      return;
+    }
+    this.props.fetchRecipes(ingredient);
+    ingredient = '';
   }
 
-  render() {
+  render () {
     return (
+      <div>
       <form className="search-form" onSubmit={this.handleSubmit}>
         <label>
           <input type="text" value={this.state.value} onChange={this.handleChange} />
         </label>
         <input type="submit" value="Submit" />
       </form>
+      <List />
+      </div>
     );
   }
 }
 
-export default SearchForm;
+function mapDispatchToProps (dispatch) {
+  return {
+    fetchRecipes: (ingredient) => {
+      dispatch(actions.fetchRecipes(ingredient));
+    }
+  };
+}
+
+SearchForm.propTypes = {
+  fetchRecipes: PropTypes.func.isRequired
+};
+
+export default connect(null, mapDispatchToProps)(SearchForm);
