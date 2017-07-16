@@ -13,6 +13,7 @@ class List extends Component {
       key={i}
       title={recipe.title}
       thumbnail={recipe.thumbnail}
+      ingredients={recipe.ingredients}
       />
         );
       })}
