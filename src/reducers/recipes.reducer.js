@@ -3,7 +3,8 @@ import * as types from '../actions/types';
 export const initialState = {
   loading: false,
   error: null,
-  recipes: []
+  recipes: [],
+  favourites: []
 };
 
 export default function (prevState = initialState, action) {
@@ -22,6 +23,10 @@ export default function (prevState = initialState, action) {
       return Object.assign({}, prevState, {
         loading: false,
         recipes: action.recipes
+      });
+    case types.ADD_TO_FAVOURITES:
+      return Object.assign({}, prevState, {
+        favourites: prevState.favourites.concat(action.recipe)
       });
     default:
       return prevState;

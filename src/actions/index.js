@@ -21,3 +21,12 @@ export function fetchRecipes (ingredient) {
       });
   };
 }
+
+export function addToFavourites (title, thumbnail, ingredients) {
+  return function (dispatch) {
+    return dispatch({
+      type: types.ADD_TO_FAVOURITES,
+      recipe: [{title: title, thumbnail: thumbnail, ingredients: ingredients, addedToFavourites: true}]
+    });
+  };
+}

@@ -9,7 +9,7 @@ class SearchForm extends Component {
   componentDidMount () {
     this.props.fetchRecipes(this.state.value);
   }
- constructor(props) {
+ constructor (props) {
     super(props);
     this.state = {value: ''};
 
