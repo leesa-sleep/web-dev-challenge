@@ -1,21 +1,27 @@
 import React, { Component } from 'react';
 import FaveList from './FaveList';
 import NavBar from './NavBar';
-import SearchForm from './SearchForm';
-import PropTypes from 'prop-types';
 import * as actions from '../actions/index.js';
 import {connect} from 'react-redux';
-const ingredient = 'cheese';
 
 class FavePage extends Component {
   componentDidMount () {
-    this.props.fetchRecipes(ingredient);
+    this.props.fetchFavourites();
+  }
+  constructor(props) {
+    super(props);
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick(event) {
+    event.preventDefault();
+    this.props.removeAllFavourites();
   }
   render () {
     return (
       <div className="FavePage">
       <NavBar />
-      <SearchForm />
+      <button type="button" className="btn" onClick={this.handleClick}>Clear favourites</button>
       <FaveList />
       </div>
     );
@@ -24,14 +30,13 @@ class FavePage extends Component {
 
 function mapDispatchToProps (dispatch) {
   return {
-    fetchRecipes: (ingredient) => {
-      dispatch(actions.fetchRecipes(ingredient));
+    fetchFavourites: () => {
+      dispatch(actions.fetchFavourites());
+    },
+    removeAllFavourites: () => {
+      dispatch(actions.removeAllFavourites());
     }
   };
 }
-
-FavePage.propTypes = {
-  fetchRecipes: PropTypes.func.isRequired
-};
 
 export default connect(null, mapDispatchToProps)(FavePage);

@@ -31,11 +31,20 @@ export function addToFavourites (title, thumbnail, ingredients) {
   };
 }
 
-export function fetchFavourites (favourites) {
+export function removeAllFavourites () {
+  return function (dispatch) {
+    return dispatch({
+      type: types.REMOVE_ALL_FAVOURITES,
+      favourites: []
+    });
+  };
+}
+
+export function fetchFavourites () {
   return function (dispatch) {
     return dispatch({
       type: types.FETCH_FAVOURITES,
-      favourites: favourites
+      favourites: []
     });
   };
 }

@@ -26,27 +26,27 @@ import { autoRehydrate, persistStore } from 'redux-persist';
 import recipes from './reducers/recipes.reducer';
 
 // constants for redux
-const logger  = createLogger();
+const logger = createLogger();
 const reducer = combineReducers({
   recipes
 });
 const store = createStore(
-  reducer, 
+  reducer,
   compose(
-  applyMiddleware(thunk, logger),
-  autoRehydrate()
+    applyMiddleware(thunk, logger),
+    autoRehydrate()
   )
-  );
+);
 
-persistStore(store);  
+persistStore(store); 
 
 ReactDOM.render(
   <Provider store={store}>
-<Router>
-  <div>
-    <Route exact path="/" component={HomePage} />
-    <Route path="/favourites" component={FavePage} />
-  </div>
-</Router>
-</Provider>, document.getElementById('root'));
+    <Router>
+      <div>
+        <Route exact path="/" component={HomePage} />
+        <Route path="/favourites" component={FavePage} />
+      </div>
+    </Router>
+  </Provider>, document.getElementById('root'));
 

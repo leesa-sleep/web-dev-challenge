@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import RecipeCard from './RecipeCard'
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import RecipeCard from './RecipeCard';
-
 
 class FaveList extends Component {
   render () {
+    if (!this.props.recipes.favourites) {
+      return <h4>loading...</h4>;
+    }
     return (
       <div className="fave-list">
         <div className='container'>
@@ -32,9 +33,5 @@ function mapStateToProps (state) {
     recipes: state.recipes
   };
 }
-
-FaveList.PropTypes = {
-  favourites: PropTypes.array.isRequired
-};
 
 export default connect(mapStateToProps)(FaveList);
