@@ -2,6 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import FaveCard from './FaveCard';
 import '../css/FaveList.css';
+import { uniq } from 'underscore';
+
+function sortFaves (arr) {
+  return uniq(arr, function (x) {
+    return x.title;
+  });
+}
 
 class FaveList extends Component {
   render () {
@@ -12,7 +19,7 @@ class FaveList extends Component {
       <div className="fave-list">
         <div className='container'>
           <div className='row'>
-            {this.props.recipes.favourites.map((recipe, i) => {
+            {sortFaves(this.props.recipes.favourites).map((recipe, i) => {
               return (
                 <FaveCard
                   key={i}
