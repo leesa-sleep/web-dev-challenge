@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 class List extends Component {
-  render() {
+  render () {
+    console.log(this.props.recipes.favourites);
     if (this.props.recipes.recipes.length === 0) {
       return <h4>No recipes found for that ingredient, please try again</h4>;
     }
@@ -29,7 +30,7 @@ class List extends Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     recipes: state.recipes
   };

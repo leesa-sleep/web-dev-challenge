@@ -1,20 +1,35 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import RecipeCard from './RecipeCard';
+
 
 class FaveList extends Component {
   render () {
-  console.log(this.props.favourites)
     return (
-      <div className="FaveList">
+      <div className="fave-list">
+        <div className='container'>
+          <div className='row'>
+            {this.props.recipes.favourites.map((recipe, i) => {
+              return (
+                <RecipeCard
+                  key={i}
+                  title={recipe.title}
+                  thumbnail={recipe.thumbnail}
+                  ingredients={recipe.ingredients}
+                />
+              );
+            })}
+          </div>
+        </div>
       </div>
     );
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
-    favourites: state.favourites
+    recipes: state.recipes
   };
 }
 

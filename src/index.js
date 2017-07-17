@@ -20,7 +20,7 @@ import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 
 // redux-persist
-// import { autoRehydrate, persistStore } from 'redux-persist';
+import { autoRehydrate, persistStore } from 'redux-persist';
 
 // reducer
 import recipes from './reducers/recipes.reducer';
@@ -33,12 +33,12 @@ const reducer = combineReducers({
 const store = createStore(
   reducer, 
   compose(
-  applyMiddleware(thunk, logger)
-  // autoRehydrate()
+  applyMiddleware(thunk, logger),
+  autoRehydrate()
   )
   );
 
-// persistStore(store);  
+persistStore(store);  
 
 ReactDOM.render(
   <Provider store={store}>
