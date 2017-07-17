@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import RecipeCard from './RecipeCard'
 import { connect } from 'react-redux';
+import '../css/FaveList.css';
 
 class FaveList extends Component {
   render () {
-    if (!this.props.recipes.favourites) {
-      return <h4>loading...</h4>;
+    if (this.props.recipes.favourites.length === 0) {
+      return <h4 id='message'>You don't currently have any favourites saved.</h4>;
     }
     return (
       <div className="fave-list">

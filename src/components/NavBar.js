@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../css/NavBar.css';
 
 class NavBar extends Component {
   render () {
@@ -16,8 +17,8 @@ class NavBar extends Component {
             </div>
             <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul className="nav navbar-nav">
-                <li><a href="/">Home</a></li>
-                <li><a href="/favourites">Favourites</a></li>
+                <li><a href="/" id='nav-item'>Home</a></li>
+                <li><a href="/favourites" id='nav-item'>Favourites</a></li>
               </ul>
             </div>
           </div>

@@ -3,6 +3,7 @@ import FaveList from './FaveList';
 import NavBar from './NavBar';
 import * as actions from '../actions/index.js';
 import {connect} from 'react-redux';
+import '../css/FavePage.css';
 
 class FavePage extends Component {
   componentDidMount () {
@@ -21,7 +22,9 @@ class FavePage extends Component {
     return (
       <div className="FavePage">
       <NavBar />
+      <div className='clear-button'>
       <button type="button" className="btn" onClick={this.handleClick}>Clear favourites</button>
+      </div>
       <FaveList />
       </div>
     );

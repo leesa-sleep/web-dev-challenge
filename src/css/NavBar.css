@@ -1,0 +1,11 @@
+.container-fluid {
+  background-color: #50A1B7;
+}
+
+#nav-item {
+  color: black;
+}
+
+.collapse.navbar-collapse {
+  margin-left: 5em;
+}

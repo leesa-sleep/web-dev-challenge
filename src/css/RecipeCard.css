@@ -1,0 +1,17 @@
+.card{
+    height: 300px;
+    background-color: #B8E8F6;
+    border-radius: 1em;
+}
+
+.card-title {
+  padding-top: 2em;
+}
+
+.card-block{
+  text-align: center;
+}
+
+#add-button {
+  background-color: white;
+}
