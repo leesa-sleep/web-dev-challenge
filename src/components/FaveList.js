@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import RecipeCard from './RecipeCard'
 import { connect } from 'react-redux';
+import FaveCard from './FaveCard';
 import '../css/FaveList.css';
 
 class FaveList extends Component {
@@ -14,7 +14,7 @@ class FaveList extends Component {
           <div className='row'>
             {this.props.recipes.favourites.map((recipe, i) => {
               return (
-                <RecipeCard
+                <FaveCard
                   key={i}
                   title={recipe.title}
                   thumbnail={recipe.thumbnail}
