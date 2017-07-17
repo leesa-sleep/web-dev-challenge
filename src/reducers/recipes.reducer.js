@@ -28,6 +28,10 @@ export default function (prevState = initialState, action) {
       return Object.assign({}, prevState, {
         favourites: prevState.favourites.concat(action.recipe)
       });
+    case types.FETCH_FAVOURITES:
+    return Object.assign({}, prevState, {
+      favourites: prevState.favourites
+    });
     default:
       return prevState;
   }

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 
 class RecipeCard extends Component {
- constructor (props) {
+  constructor(props) {
     super(props);
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,17 +24,23 @@ class RecipeCard extends Component {
     }
     return (
       <div className="RecipeCard">
-        <h3>{title}</h3>
-        <img src={thumbnail} alt="" />
-        <h5>Ingredients: {ingredients}</h5>
-        <h5>Total ingredients: {ingredientCount(ingredients)}</h5>
-        <button type="button" className="btn" onClick={this.handleSubmit}>Add to favourites</button>
+        <div className='col-sm-4'>
+          <div className="card">
+            <div className="card-block">
+              <h3 className="card-title">{title}</h3>
+              <img src={thumbnail} alt="" />
+              <h5>Ingredients: {ingredients}</h5>
+              <h5>Total ingredients: {ingredientCount(ingredients)}</h5>
+              <button type="button" className="btn" onClick={this.handleSubmit}>Add to favourites</button>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
 }
 
-function mapDispatchToProps (dispatch) {
+function mapDispatchToProps(dispatch) {
   return {
     addToFavourites: (title, thumbnail, ingredients) => {
       dispatch(actions.addToFavourites(title, thumbnail, ingredients));

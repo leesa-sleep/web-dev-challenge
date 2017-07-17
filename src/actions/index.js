@@ -30,3 +30,11 @@ export function addToFavourites (title, thumbnail, ingredients) {
     });
   };
 }
+
+export function fetchFavourites () {
+  return function (dispatch) {
+    return dispatch({
+      type: types.FETCH_FAVOURITES
+    });
+  };
+}

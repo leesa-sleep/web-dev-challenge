@@ -1,31 +1,35 @@
 import React, { Component } from 'react';
 import RecipeCard from './RecipeCard';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 class List extends Component {
-  render () {
+  render() {
     if (this.props.recipes.recipes.length === 0) {
       return <h4>No recipes found for that ingredient, please try again</h4>;
     }
     return (
       <div className="list">
-      {this.props.recipes.recipes.map((recipe, i) => {
-        return (
-      <RecipeCard 
-      key={i}
-      title={recipe.title}
-      thumbnail={recipe.thumbnail}
-      ingredients={recipe.ingredients}
-      />
-        );
-      })}
+        <div className='container'>
+          <div className='row'>
+            {this.props.recipes.recipes.map((recipe, i) => {
+              return (
+                <RecipeCard
+                  key={i}
+                  title={recipe.title}
+                  thumbnail={recipe.thumbnail}
+                  ingredients={recipe.ingredients}
+                />
+              );
+            })}
+          </div>
+        </div>
       </div>
     );
   }
 }
 
-function mapStateToProps (state) {
+function mapStateToProps(state) {
   return {
     recipes: state.recipes
   };
