@@ -44,7 +44,7 @@ $(document).ready(function(){
 
                         html += '<div class="col-sm-4 recipe">';
                         html += '<img class="thumb" src="' +thumbnail+ '">';
-                        html += '<p>' + title + '</p>';
+                        html += '<p><a href="'+link+'">' + title +'</a></p>';
                         html += '<p>' + ingredients + '</p>';
                         html += '</div>';
                         //  $('#result').text(json.results[i].title);
