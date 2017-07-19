@@ -32,20 +32,22 @@ $(document).ready(function(){
                     $('#status').text("Here are your recipes for " + recipe +"!")
                     var html=""
                     for(var i in json.results){
+                        console.log(json.results[i].ingredients);
+                        var ing = json.results[i].ingredients.split(",");
+                        console.log("ing = " + ing.length);
                         var title = json.results[i].title;
-                        var ingredients = json.results[i].ingredients;
+                        var ingredients = ing.length;
                         var thumbnail = json.results[i].thumbnail;
                         var link = json.results[i].href;
 
                         if(json.results[i].thumbnail === ''){
                             thumbnail = 'img/food.jpg';}
 
-                        console.log(title, ingredients, thumbnail, link)
-
                         html += '<div class="col-sm-4 recipe">';
                         html += '<img class="thumb" src="' +thumbnail+ '">';
                         html += '<p><a href="'+link+'">' + title +'</a></p>';
-                        html += '<p>' + ingredients + '</p>';
+                        html += '<p> Number of ingredients: ' + ingredients + '</p>';
+                        html += '<button type="button">Add to favourites!</button>'
                         html += '</div>';
                         //  $('#result').text(json.results[i].title);
                     }
