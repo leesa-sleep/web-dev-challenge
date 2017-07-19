@@ -1,4 +1,17 @@
+
 $(document).ready(function(){
+
+    var objectA = {}
+    var fav = []
+
+    $(document).delegate( ".add", "click", function() {
+        console.log(objectA)
+        var num = this.id;
+        console.log(num);
+        console.log(objectA[num])
+        fav.push(objectA[num])
+        console.log(fav)
+;    });
 
    var getRecipe = function(){
 
@@ -17,10 +30,10 @@ $(document).ready(function(){
              var Proxy = 'https://cors-anywhere.herokuapp.com/';
              var finalUrl = Proxy + myUrl;
 
-             console.log(finalUrl);
-
              $.getJSON(finalUrl, function(json) {
                  console.log(json.results);
+                 objectA = json.results;
+                 console.log(objectA);
                  console.log($.isEmptyObject( json.results ));
 
                  if($.isEmptyObject( json.results )){
@@ -42,21 +55,20 @@ $(document).ready(function(){
                             thumbnail = 'img/food.jpg';}
 
                         html += '<div class="col-sm-4 recipe">';
-                        html += '<div class="thumbCont"><img class="thumb" src="' +thumbnail+ '"><button class="add" type="button">+</button></div>';
+                        html += '<div class="thumbCont"><img class="thumb" src="' +thumbnail+ '"><button class="add" type="button" id="'+[i]+'">+</button></div>';
                         html += '<p><a href="'+link+'">' + title +'</a></p>';
                         html += '<p> Number of ingredients: ' + ingredients + '</p>';
                         html += '</div>';
                     }
                  $('#result').html(html);
-
+                 return objectA;
                   console.log(json.results[0].title);
-
                  }
                 
             });
         }
 
-    }
+    }//closes getRecipe();
 
    $('#search').click(getRecipe);
 
