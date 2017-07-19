@@ -1,0 +1,40 @@
+ .jumbotron {
+    background-image: url('/media/vegetables.jpg');
+    color: white;
+} 
+
+.page-header {
+    background-image: url('/media/vegetables.jpg');
+    color: white;
+}
+
+.navbar-default {
+    background-color: darkseagreen;
+}
+
+.panel-default {
+    display: grid;
+}
+
+.header-text {
+    min-height: 52px;
+    color: purple;
+}
+
+.thumbnail {
+    margin-bottom: 0;
+}
+
+#brand {
+    color: purple;
+    cursor: pointer;
+}
+
+#add:hover {
+    background-color: darkseagreen;
+}
+
+#delete:hover {
+    background-color: red;
+    color: white;
+}
