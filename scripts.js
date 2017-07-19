@@ -21,9 +21,9 @@ $(document).ready(function(){
 
              $.getJSON(finalUrl, function(json) {
                  console.log(json.results);
-                 console.log(json.length);
+                 console.log($.isEmptyObject( json.results ));
 
-                 if($.isEmptyObject({})){
+                 if($.isEmptyObject( json.results )){
                      console.log("failed");
                       $('#status').text("We couldn't find any recipes for " + recipe + " try something else!")
                  }
@@ -31,15 +31,22 @@ $(document).ready(function(){
                  else {
                     $('#status').text("Here are your recipes for " + recipe +"!")
                     var html=""
-                // for(var i = 0; i < json.results.length; i++){
                     for(var i in json.results){
-                    html += '<div class="col-sm-4 recipe">';
-                    html += '<p>' + json.results[i].title + '</p>';
-                    html += '<p>' + json.results[i].ingredients + '</p>';
-                    // html += '<img src="'+json.results[i].thumbnail+'">;
-                    html += '</div>';
-                    //  $('#result').text(json.results[i].title);
-                 }
+                        // var title = json.results[i].title;
+                        // var ingredients = json.results[i].ingredients;
+                        // var thumbnail = json.results[i].thumbnail;
+                        // var link = json.results[i].href;
+
+
+                        // console.log(title, ingredients, thumbnail, link)
+
+                        html += '<div class="col-sm-4 recipe">';
+                        html += '<p>' + json.results[i].title + '</p>';
+                        html += '<p>' + json.results[i].ingredients + '</p>';
+                        // html += '<img src="'+json.results[i].thumbnail+'">;
+                        html += '</div>';
+                        //  $('#result').text(json.results[i].title);
+                    }
                  $('#result').html(html);
 
                   console.log(json.results[0].title);
