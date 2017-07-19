@@ -12,11 +12,23 @@ $(document).ready(function(){
 
         else {
              $('#status').text("Here are your recipes for " + recipe +"!")
+
+             var myUrl = 'http://www.recipepuppy.com/api/?q='+recipe;
+             var Proxy = 'https://cors-anywhere.herokuapp.com/';
+             var finalUrl = Proxy + myUrl;
+
+             console.log(finalUrl);
+
+             $.getJSON(finalUrl, function(json) {
+
+                  console.log(json);
+            });
         }
-   };
 
-
+    }
 
    $('#search').click(getRecipe);
-             
+
+   
+
 });
