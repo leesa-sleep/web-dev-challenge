@@ -3,7 +3,17 @@
     height: 300px;
 }
 
+.thumbCont{
+    position: relative;
+}
+
 .thumb{
     width: 100%;
     height: 140px;
+}
+
+.add{
+    position: absolute;
+    right:0;
+    bottom:0;
 }
