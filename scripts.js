@@ -10,6 +10,9 @@ $(document).ready(function(){
             $('#status').text("Please enter a search term. Help us help you!")
         }
 
+        else {
+             $('#status').text("Here are your recipes for " + recipe +"!")
+        }
    };
 
 
