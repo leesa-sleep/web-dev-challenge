@@ -1,0 +1,29 @@
+html {
+  background-color: white;
+}
+
+#favouritesPage {
+  display: none;
+}
+
+.leesa-thumbnails  {
+  min-height: 300px;
+}
+
+#favouritesPage {
+  .leesa-thumbnails {
+    min-height: 350px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .navbar-brand{
+    width: 100%;
+    text-align: center;
+  }
+
+  .menu-items {
+    float: left;
+    width: 50%;
+  }
+}
