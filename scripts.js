@@ -5,6 +5,7 @@ $(document).ready(function(){
     var objectA = {}
     var fav = JSON.parse(localStorage.faves);
 
+    // ADD ITEM TO FAVOURITES
     $(document).delegate( ".add", "click", function() {
         console.log(objectA)
         var num = this.id;
@@ -15,6 +16,8 @@ $(document).ready(function(){
         console.log(fav)
     });
 
+
+    // REMOVES ITEM FROM FAVOURITES
     $(document).delegate( ".remove", "click", function() {
         console.log(fav)
         var f = this.id;
@@ -23,21 +26,16 @@ $(document).ready(function(){
         fav.splice(f, 1);
         localStorage.setItem("faves", JSON.stringify(fav));
         location.reload();
-        // var num = this.id;
-        // console.log(num);
-        // console.log(objectA[num])
-        // fav.push(objectA[num])
-        // localStorage.setItem("faves", JSON.stringify(fav));
-        // console.log(fav)
     });
 
-
+    // GET RECIPE FUNCTION
    var getRecipe = function(){
 
         var recipe = $('#term').val();
         $('#status').text("");
         console.log(recipe);
 
+        //IF USER PRESSES GO WITHOUT ENTERING A SEARCH TERM
         if(recipe ==''){
             $('#status').text("Please enter a search term. Help us help you!")
         }
@@ -103,12 +101,6 @@ $(document).ready(function(){
             console.log(myArray[0].title);
             var html=""
              for(var i in myArray){
-                 console.log("words" + i);
-                 console.log(myArray[i].title);
-                 console.log(myArray[i].href);
-                 console.log(myArray[i].ingredients);
-                 console.log(myArray[i].href);
-
                         var ing = myArray[i].ingredients.split(",");
                         var title = myArray[i].title;
                         var ingredients = ing.length;
@@ -118,10 +110,11 @@ $(document).ready(function(){
                         if(myArray[i].thumbnail === ''){
                             thumbnail = 'img/food.jpg';}
 
-                        html += '<div class="col-sm-4 recipe">';
+                        html += '<div class="col-sm-4 col-lg-4 recipe">';
                         html += '<div class="thumbCont"><img class="thumb" src="' +thumbnail+ '"><button class="remove" type="button" id="'+[i]+'">-</button></div>';
                         html += '<p><a href="'+link+'">' + title +'</a></p>';
                         html += '<p> Number of ingredients: ' + ingredients + '</p>';
+                        html += '<div id="share-buttons"><a href="http://www.facebook.com/sharer.php?u='+link+'" target="_blank"><img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" /></a><a href="https://twitter.com/share?url='+link+'&amp;text='+title+'" target="_blank"><img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" /></a></div>';
                         html += '</div>';
                     }
                     $('#faveDisplay').html(html);

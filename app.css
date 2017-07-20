@@ -12,8 +12,16 @@
     height: 140px;
 }
 
-.add{
+.add, .remove{
     position: absolute;
     right:0;
     bottom:0;
+}
+
+#share-buttons img {
+width: 35px;
+padding: 5px;
+border: 0;
+box-shadow: 0;
+display: inline;
 }
