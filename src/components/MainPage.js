@@ -25,7 +25,7 @@ class MainPage extends Component {
     }
 
     generateRecipesCards (recipes) {
-        // return <div>{recipes}</div>
+        return <div>{recipes}</div>
         return (
             recipes.map((recipe, i) => {
                 return (

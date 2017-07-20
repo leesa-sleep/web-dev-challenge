@@ -22,8 +22,9 @@ function getRecipes (req, res) {
 
     request(`http://www.recipepuppy.com/api/?i=${ingredients}`, function(error, response, body) {
 
-        console.log('body', body)
-        res.status(200).send({recipes: body})
+        console.log('body', response.body)
+
+        res.status(200).send(body)
     })
 }
 
