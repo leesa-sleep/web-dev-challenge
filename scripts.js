@@ -43,9 +43,10 @@ $(document).ready(function(){
         else {
              
             //CREATES PROXY URL TO DEAL WITH CORS
-             var myUrl = 'http://www.recipepuppy.com/api/?q='+recipe;
-             var Proxy = 'https://cors-anywhere.herokuapp.com/';
-             var finalUrl = Proxy + myUrl;
+            //  var myUrl = 'http://www.recipepuppy.com/api/?q='+recipe;
+            //  var Proxy = 'https://cors-anywhere.herokuapp.com/';
+            //  var finalUrl = Proxy + myUrl;
+            var finalUrl = 'https://cors-anywhere.herokuapp.com/'+'http://www.recipepuppy.com/api/?q='+recipe;
 
              //API CALL
              $.getJSON(finalUrl, function(json) {
