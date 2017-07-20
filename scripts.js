@@ -42,22 +42,25 @@ $(document).ready(function(){
 
         else {
              
-
+            //CREATES PROXY URL TO DEAL WITH CORS
              var myUrl = 'http://www.recipepuppy.com/api/?q='+recipe;
              var Proxy = 'https://cors-anywhere.herokuapp.com/';
              var finalUrl = Proxy + myUrl;
 
+             //API CALL
              $.getJSON(finalUrl, function(json) {
                  console.log(json.results);
                  objectA = json.results;
                  console.log(objectA);
                  console.log($.isEmptyObject( json.results ));
 
+                 //IN CASE NOTHING COMES BACK
                  if($.isEmptyObject( json.results )){
                      console.log("failed");
                       $('#status').text("We couldn't find any recipes for " + recipe + " try something else!")
                  }
 
+                 //SOMETHING COMES BACK
                  else {
                     $('#status').text("Here are your recipes for " + recipe +"!")
                     var html=""
@@ -71,7 +74,7 @@ $(document).ready(function(){
                         if(json.results[i].thumbnail === ''){
                             thumbnail = 'img/food.jpg';}
 
-                        html += '<div class="col-sm-4 recipe">';
+                        html += '<div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 recipe">';
                         html += '<div class="thumbCont"><img class="thumb" src="' +thumbnail+ '"><button class="add" type="button" id="'+[i]+'">+</button></div>';
                         html += '<p><a href="'+link+'">' + title +'</a></p>';
                         html += '<p> Number of ingredients: ' + ingredients + '</p>';
@@ -110,11 +113,11 @@ $(document).ready(function(){
                         if(myArray[i].thumbnail === ''){
                             thumbnail = 'img/food.jpg';}
 
-                        html += '<div class="col-sm-4 col-lg-4 recipe">';
+                          html += '<div class="col-xs-6 col-sm-6 col-md-4 col-lg-3 recipe">';
                         html += '<div class="thumbCont"><img class="thumb" src="' +thumbnail+ '"><button class="remove" type="button" id="'+[i]+'">-</button></div>';
                         html += '<p><a href="'+link+'">' + title +'</a></p>';
                         html += '<p> Number of ingredients: ' + ingredients + '</p>';
-                        html += '<div id="share-buttons"><a href="http://www.facebook.com/sharer.php?u='+link+'" target="_blank"><img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" /></a><a href="https://twitter.com/share?url='+link+'&amp;text='+title+'" target="_blank"><img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" /></a></div>';
+                        html += '<div id="share-buttons"><a href="http://www.facebook.com/sharer.php?u='+link+'" target="_blank"><img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" /></a><a href="https://twitter.com/share?url='+link+'&amp;text='+title+'" target="_blank"><img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" /></a><a href="mailto:?Subject='+title+'&amp;Body=I%20saw%20this%20and%20thought%20of%20you!%20 '+title+'"><img src="https://simplesharebuttons.com/images/somacro/email.png" alt="Email" /></a></div>';
                         html += '</div>';
                     }
                     $('#faveDisplay').html(html);
