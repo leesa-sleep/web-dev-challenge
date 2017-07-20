@@ -104,11 +104,11 @@ $(document).ready(function(){
            //IN CASE NOTHING COMES BACK
            if (myArray.length === 0) {
                console.log("failed");
-               $('.favStatus').text("Looks like there's nothing here, try searching for some delicious recipes and adding them here!")
+               $('#favStatus').text("Looks like there's nothing here, try searching for some delicious recipes and adding them here!")
            }
 
            else {
-               $('.favStatus').text("Here are your favourites! You can share with your friends or remove from the list")
+               $('#favStatus').text("Here are your favourites! You can share with your friends or remove from the list")
                var html = ""
                for (var i in myArray) {
                    var ing = myArray[i].ingredients.split(",");
