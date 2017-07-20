@@ -132,6 +132,13 @@ $(document).ready(function(){
 
    $('#search').click(getRecipe);
 
+   $('#term').keyup(function(event){
+       if(event.keyCode == 13){
+           getRecipe();
+       }
+   });
+
+
    $('#favouritesLink').ready(listFaves);
    
 
