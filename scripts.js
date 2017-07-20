@@ -3,25 +3,17 @@ $(document).ready(function () {
     var objectA = {}
     var fav = []
     var fav = JSON.parse(localStorage.faves);
-    var cont;
 
     // ADD ITEM TO FAVOURITES
     $(document).delegate(".add", "click", function () {
-        console.log(objectA)
         var num = this.id;
-        console.log(num);
-        console.log(objectA[num])
         fav.push(objectA[num])
         localStorage.setItem("faves", JSON.stringify(fav));
-        console.log(fav)
     });
 
     // REMOVES ITEM FROM FAVOURITES
     $(document).delegate(".remove", "click", function () {
-        console.log(fav)
         var f = this.id;
-        console.log(f);
-        console.log(fav[f]);
         fav.splice(f, 1);
         localStorage.setItem("faves", JSON.stringify(fav));
         location.reload();
@@ -32,7 +24,6 @@ $(document).ready(function () {
 
         var recipe = $('#term').val();
         $('#status').text("");
-        console.log(recipe);
 
         //IF USER PRESSES GO WITHOUT ENTERING A SEARCH TERM
         if (recipe == '') {
@@ -46,14 +37,10 @@ $(document).ready(function () {
 
             //API CALL
             $.getJSON(finalUrl, function (json) {
-                // console.log(json.results);
                 objectA = json.results;
-                // console.log(objectA);
-                console.log($.isEmptyObject(json.results));
 
                 //IN CASE NOTHING COMES BACK
                 if ($.isEmptyObject(json.results)) {
-                    console.log("failed");
                     $('#status').text("We couldn't find any recipes for " + recipe + " try something else!")
                 }
 
@@ -80,10 +67,6 @@ $(document).ready(function () {
                     }
                     //POPULATE RESULT SECTION  
                     $('#result').html(html);
-
-
-                    console.log(json.results[0].title);
-
                     return objectA;
                 }
 
@@ -95,13 +78,10 @@ $(document).ready(function () {
     //FAVES POPULATION FUNCTION
     var listFaves = function () {
         var myArray = JSON.parse(localStorage.getItem('faves'));
-        console.log(myArray);
-        console.log("clicked on favourites")
 
         var displayFaves = function () {
             //IN CASE NOTHING COMES BACK
             if (myArray.length === 0) {
-                console.log("failed");
                 $('#favStatus').text("Looks like there's nothing here, try searching for some delicious recipes and adding them here!")
             }
 
@@ -129,7 +109,6 @@ $(document).ready(function () {
                 $('#faveDisplay').html(html);
             }
         }
-        console.log("hello");
         displayFaves();
     }//CLOSES LISTFAVES
 
@@ -143,8 +122,6 @@ $(document).ready(function () {
         }
     });
 
-
     $('#favouritesLink').ready(listFaves);
-
 
 });
