@@ -27,14 +27,21 @@ export function fetchAllRecipes (ingredients) {
     return dispatch => { 
         dispatch(fetchAllRecipeRequest());
             axios.get(
-                    `${ROOT}/?i=${ingredients}`, {
-                        headers: { 'Access-Control-Allow-Origin': 'http://localhost:3000', 
-               'Access-Control-Allow-Methods': 'GET,OPTIONS,HEAD,PUT,POST,DELETE,PATCH',
-               'Access-Control-Allow-Headers': 'Origin, Content-Type, Accept, Authorization, X-Request-With',
-               'Access-Control-Allow-Credentials': 'true' }
-                    }
-                )
+                    `http://www.recipepuppy.com/api/?i=${ingredients}`)
+                    //, [
+                    // {headers:{'Access-Control-Allow-Origin': '*',
+                    //     'Access-Control-Allow-Methods': 'GET',
+                    // 'Access-Control-Allow-Headers': 'Origin, Content-Type, Accept, Authorization, X-Request-With',
+                    // 'Access-Control-Allow-Credentials': 'true'}}])
+            // //             headers: { 'Access-Control-Allow-Origin': '*', 
+            // //    'Access-Control-Allow-Methods': 'GET',
+            // //    'Access-Control-Allow-Headers': 'Origin, Content-Type, Accept, Authorization, X-Request-With',
+            // //    'Access-Control-Allow-Credentials': 'true' }
+            // //         }
+            //     )
+            // fetch(`http://www.recipepuppy.com/api/?i=${ingredients}`)
                 .then(res => {
+                    console.log(res)
                     dispatch(fetchAllRecipeSuccess(res.data.results));
                 })
                 .catch(error => {
