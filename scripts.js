@@ -81,6 +81,7 @@ $(document).ready(function(){
                         html += '<p> Number of ingredients: ' + ingredients + '</p>';
                         html += '</div>';
                     }
+                   //POPULATE RESULT SECTION  
                  $('#result').html(html);
                  
 
@@ -94,7 +95,7 @@ $(document).ready(function(){
 
     }//closes getRecipe();
 
-     
+     //FAVES POPULATION FUNCTION
      var listFaves = function(){
         var myArray = JSON.parse(localStorage.getItem('faves'));
         console.log(myArray);
