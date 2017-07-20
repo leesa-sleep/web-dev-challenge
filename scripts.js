@@ -102,6 +102,7 @@ $(document).ready(function(){
             var displayFaves = function(){
             console.log("displaying faves");
             console.log(myArray[0].title);
+            $('.favStatus').text("Here are your favourites! You can share with your friends or remove from the list")
             var html=""
              for(var i in myArray){
                         var ing = myArray[i].ingredients.split(",");
