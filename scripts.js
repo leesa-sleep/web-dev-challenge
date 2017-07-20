@@ -1,17 +1,19 @@
 
+
+var fav = []
 $(document).ready(function(){
-
     var objectA = {}
-    var fav = []
-
+    var fav = JSON.parse(localStorage.faves);
     $(document).delegate( ".add", "click", function() {
         console.log(objectA)
         var num = this.id;
         console.log(num);
         console.log(objectA[num])
         fav.push(objectA[num])
+        localStorage.setItem("faves", JSON.stringify(fav));
         console.log(fav)
-;    });
+    });
+
 
    var getRecipe = function(){
 
@@ -61,8 +63,11 @@ $(document).ready(function(){
                         html += '</div>';
                     }
                  $('#result').html(html);
-                 return objectA;
+                 
+
                   console.log(json.results[0].title);
+
+                  return objectA;
                  }
                 
             });
@@ -70,8 +75,42 @@ $(document).ready(function(){
 
     }//closes getRecipe();
 
+     
+     var listFaves = function(){
+        var myArray = JSON.parse(localStorage.getItem('faves'));
+        console.log(myArray);
+        console.log("clicked on favourites")
+            
+            var displayFaves = function(){
+            console.log("displaying faves");
+            console.log(myArray[0].title);
+             for(var i in myArray){
+                 console.log("words" + i);
+                 console.log(myArray[i].title);
+                        // var ing = json.results[i].ingredients.split(",");
+                        // var title = json.results[i].title;
+                        // var ingredients = ing.length;
+                        // var thumbnail = json.results[i].thumbnail;
+                        // var link = json.results[i].href;
+
+                        // if(json.results[i].thumbnail === ''){
+                        //     thumbnail = 'img/food.jpg';}
+
+                        // html += '<div class="col-sm-4 recipe">';
+                        // html += '<div class="thumbCont"><img class="thumb" src="' +thumbnail+ '"><button class="add" type="button" id="'+[i]+'">+</button></div>';
+                        // html += '<p><a href="'+link+'">' + title +'</a></p>';
+                        // html += '<p> Number of ingredients: ' + ingredients + '</p>';
+                        // html += '</div>';
+                    }
+        }  
+        console.log("hello");
+        displayFaves();
+    }
+   
+
    $('#search').click(getRecipe);
 
+   $('#favouritesLink').ready(listFaves);
    
 
 });
