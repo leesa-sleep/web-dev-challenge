@@ -11,7 +11,7 @@ app.use('/api', apiRoutes)
 //app.use(express.static(path.resolve(__dirname, '..', 'public')));
 
 app.get('*', (request, response) => {
-    response.sendFile(path.resolve(__dirname, '..', 'public', 'index.html'));
+    response.sendFile(path.resolve(__dirname, '..', 'public'));
 });
 
 module.exports = app;

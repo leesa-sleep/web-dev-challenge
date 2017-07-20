@@ -28,9 +28,10 @@ export function fetchAllRecipes (ingredients) {
     return dispatch => { 
         dispatch(fetchAllRecipeRequest());
             axios
-                .get(`${ROOT}/?i=${ingredients}`)
+                .get(`https://frozen-river-70940.herokuapp.com/api/recipes/?i=${ingredients}`)
+                //.get(`${ROOT}/?i=${ingredients}`)
                 .then(res => {
-                    console.log(res)
+                    console.log('RESULT: ', res.data)
                     dispatch(fetchAllRecipeSuccess(res.data.results));
                 })
                 .catch(error => {

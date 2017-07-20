@@ -35,20 +35,3 @@ module.exports = {
     port: 3000,
   }
 };
-
-    // headers: { 'Access-Control-Allow-Origin': 'http://localhost:3000/', 
-    //            'Access-Control-Allow-Methods': 'GET,OPTIONS,HEAD,PUT,POST,DELETE,PATCH',
-    //            'Access-Control-Allow-Headers': 'Origin, Content-Type, Accept, Authorization, X-Request-With',
-    //            'Access-Control-Allow-Credentials': 'true' },
-    // proxy: {
-    //   '/api': {
-    //     target: {
-    //       host: '127.0.0.1',
-    //       protocol: 'http:',
-    //       port: 3001
-    //     },
-    //     pathRewrite: {
-    //       '^api/': ''
-    //     }
-    //   }
-    // }
