@@ -9,7 +9,7 @@ import { fetchAllRecipes, addToFavourites } from '../actions/actions';
 class MainPage extends Component {
 
     render () {
-
+        console.log(this.props)
         if (this.props.recipes <= 0) return <div className='jumbotron'><h3>
             Please enter a selection of ingredients (comma seperated) to find related recipes</h3>
         </div>;

@@ -8,9 +8,6 @@ import Button from './Button';
 
 class FavouritesPage extends Component {
     
-    componentWillMount () {
-
-    }
     render () {
         return (
             <div>

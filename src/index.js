@@ -18,6 +18,7 @@ ReactDOM.render(
         <Router history={browserHistory}>
             <Route path='/' component={App}>
                 <IndexRoute component={MainPage} />
+                <Route path='recipes/:ingredients' component={MainPage} />
                 <Route path='/favourites' component={FavouritesPage} />
             </Route>
         </Router>

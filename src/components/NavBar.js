@@ -57,7 +57,7 @@ class NavBar extends Component {
     submitIngredients (event) {
         event.preventDefault();
         this.props.fetchAllRecipes(this.state.input);
-        browserHistory.push('/');
+        browserHistory.push(`/recipes/${this.state.input}`);
         this.setState({ input: '' });
     }
 }
