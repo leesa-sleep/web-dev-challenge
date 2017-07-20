@@ -102,8 +102,14 @@ $(document).ready(function(){
         console.log("clicked on favourites")
             
             var displayFaves = function(){
-            console.log("displaying faves");
-            console.log(myArray[0].title);
+            //IN CASE NOTHING COMES BACK
+                    if(myArray.length===0){
+                     console.log("failed");
+                      $('.favStatus').text("Looks like there's nothing here, try searching for some delicious recipes and adding them here!")
+                 }
+
+                 else{
+
             $('.favStatus').text("Here are your favourites! You can share with your friends or remove from the list")
             var html=""
              for(var i in myArray){
@@ -124,6 +130,7 @@ $(document).ready(function(){
                         html += '</div>';
                     }
                     $('#faveDisplay').html(html);
+                 }
         }  
         console.log("hello");
         displayFaves();
