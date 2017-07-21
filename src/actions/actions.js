@@ -26,7 +26,7 @@ export function fetchAllRecipes (ingredients) {
     return dispatch => { 
         dispatch(fetchAllRecipeRequest());
             axios
-                .get(`${config.ROOT}/${ingredients}`)
+                .get(`${config.PROXY}/?i=${ingredients}`)
                 .then(res => {
                     dispatch(fetchAllRecipeSuccess(res.data.results));
                 })

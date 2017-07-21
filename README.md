@@ -2,9 +2,11 @@
 
 A recipe finder web page based on your input of ingredients. 
 
-Please note: Due to a CORS issue with the recipepuppy API, I had to clone the API and host on Heroku. This means that there may be a delay on your initial search due to the fetch request waking the API up. 
-If you would like to view the API, it can be found [here](https://frozen-river-70940.herokuapp.com/api)
+Please note: Due to a CORS issue with the recipepuppy API, I had to use a third-party cors-anywhere API to initially make a GET request.  
 
+I did however build a clone of the recipepuppy API which I have hosted on Heroku and allowed me to bypass the CORS issue for my front-end to make a GET request. I have omitted this from the test however due to the added code base, as well as it being slower due to the time it takes for the API to wake up on Heroku.
+
+If you would like to view the API, it can be found [here](https://frozen-river-70940.herokuapp.com/api), and on [Github](https://github.com/curtisjohnson1/recipe-server)
 
 ## Prerequisites
 
@@ -37,7 +39,7 @@ npm install
 Run package script
 
 ```javascript
-npm dev
+npm run dev
 ```
 
 Once the package scripts have been successfully loaded, follow the below link in your browser to view the wepbage
