@@ -1,3 +1,52 @@
+# web-dev-challenge installation
+
+A recipe finder web page based on your input of ingredients. 
+
+Please note: Due to a CORS issue with the recipepuppy API, I had to clone the API and host on Heroku. This means that there may be a delay on your initial search due to the fetch request waking the API up. 
+If you would like to view the API, it can be found [here](https://frozen-river-70940.herokuapp.com/api)
+
+
+## Prerequisites
+
+Please ensure that you are running Node version 6.11 or higher, you can check that you are by running terminal command
+
+```javascript
+node -v
+```
+
+If you do not have node installed, then please follow [here](https://nodejs.org/en/download/) to get node installed onto your machine.
+
+## Getting started
+
+To get started, please follow the below instructions
+
+## Local Machine Commands
+
+Clone the git repo
+
+```javascript
+git clone https://github.com/curtisjohnson1/web-dev-challenge.git
+```
+
+Install all dependencies that are required
+
+```javascript
+npm install
+```
+
+Run package script
+
+```javascript
+npm dev
+```
+
+Once the package scripts have been successfully loaded, follow the below link in your browser to view the wepbage
+
+```javascript
+https://localhost:3000
+```
+
+
 # Leesa Web Developer Code Challenge
 
 
