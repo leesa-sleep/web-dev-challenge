@@ -18,12 +18,7 @@ function getRecipes (req, res) {
 
     const ingredients = req.params.ingredients
 
-    console.log('@@@@', req.params.ingredients)
-
     request(`http://www.recipepuppy.com/api/?i=${ingredients}`, function(error, response, body) {
-
-        console.log('body', response.body)
-
         res.status(200).send(body)
     })
 }

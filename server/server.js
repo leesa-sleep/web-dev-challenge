@@ -8,8 +8,6 @@ app.use(cors())
 
 app.use('/api', apiRoutes)
 
-//app.use(express.static(path.resolve(__dirname, '..', 'public')));
-
 app.get('*', (request, response) => {
     response.sendFile(path.resolve(__dirname, '..', 'public'));
 });

@@ -1,8 +1,6 @@
 import * as types from './types';
 import axios from 'axios';
-import ROOT from '../../config';
-
-//const ROOT = 'http://www.recipepuppy.com/api';
+import config from '../../config';
 
 export function fetchAllRecipeRequest () {
     return {
@@ -28,10 +26,8 @@ export function fetchAllRecipes (ingredients) {
     return dispatch => { 
         dispatch(fetchAllRecipeRequest());
             axios
-                .get(`https://frozen-river-70940.herokuapp.com/api/recipes/${ingredients}`)
-                //.get(`${ROOT}/?i=${ingredients}`)
+                .get(`${config.ROOT}/${ingredients}`)
                 .then(res => {
-                    console.log('RESULT: ', res.data)
                     dispatch(fetchAllRecipeSuccess(res.data.results));
                 })
                 .catch(error => {
