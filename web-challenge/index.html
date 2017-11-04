@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="script.js"></script>
+</head>
+
+<body>
+
+<div id="header">
+	<h1>PinDish</h1>
+	<form action="http://www.recipepuppy.com/" method="get" style="font-size:10px;">
+
+		<input type="text" name="i" id="i" value="Enter ingredients separated by commas" style="color:gray;font-size:18px; padding: 0 5px;" onfocus="if(this.style.color=='gray'){this.style.color='black';this.value='';}" onblur="if(this.value==''){this.style.color='gray';this.value='Enter ingredients separated by commas';}" />
+		<input type="submit" value="Search" style="position: relative; left: -9999px;" />
+		<div style="clear: both;height:0px;"></div>
+		<div id="reference">
+			Powered by <a href="http://www.recipepuppy.com" style="font-size:10px;">Recipe Puppy</a>
+		</div>
+
+	</form>
+	<div style="clear: both;height:0px;"></div>
+</div>
+
+<div id="results"></div>
+
+<script>
+$('form').submit(getRecipes);
+
+$('.save').click(function() {
+	console.log('works');
+	favorites.push( $(this).parent().html() );
+	console.log('works');
+	console.log($(this).parent().html());
+	alert(favorites[0]);
+});
+</script>
+
+</body>
+</html>
