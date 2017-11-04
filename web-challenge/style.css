@@ -1,0 +1,43 @@
+body, #header {
+	display: block;
+}
+
+form, #i {
+	width: 80%;
+	float: left;
+}
+
+form {
+	margin: 20px 0 0 0;
+}
+
+
+#header {
+	width: 100%;
+}
+
+#header h1 {
+	margin: 25px 20px 0 20px;
+	float: left;
+}
+
+#header > h1, #header > form {
+	display: inline-block;
+}
+#i {
+	height: 35px;
+}
+
+#reference {
+	float: left;
+}
+
+#results {
+	width: 100%;
+}
+
+.recipe {
+	display: inline-block;
+	width: 30%;
+	margin: 10px;
+}
