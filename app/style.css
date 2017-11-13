@@ -1,0 +1,21 @@
+nav a{
+  text-decoration: none;
+}
+
+.wrapper{
+  margin: 0 auto;
+  width: 50%;
+}
+
+.recipe{
+  margin: 0 auto;
+  width: 200px;
+  height: 300px;
+  display: inline-block;
+}
+
+.recipe img{
+  margin: 0;
+  width: 200px;
+  height: 200px;
+}
