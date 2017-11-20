@@ -1,0 +1,71 @@
+var api = "http://www.recipepuppy.com/api/";
+var results = [];
+
+function search() {
+    var ingredients = $("#ingredient").val();
+    var query = $("#query").val();
+    var page = $("#page_number").val();
+    var searchTerm = "";
+    if (ingredients)
+        searchTerm += "i=" + ingredients + "&";
+    if (query)
+        searchTerm += "q=" + query + "&";
+    if (page)
+        searchTerm += "p=" + page;
+
+    if (searchTerm) {
+        searchTerm = api + "?" + searchTerm;
+        queryAPI(searchTerm);
+    } else {
+        queryAPI(api);
+    }
+}
+
+function queryAPI(url) {
+    $.ajax({
+        url: url,
+        type: 'GET',
+        headers: {
+            'Access-Control-Allow-Origin': '*'
+        },
+        contentType: 'application/json; charset=utf-8',
+        success: function(resultData) {
+            var data = JSON.parse(resultData);
+            results = data.results;
+            var listItems = "";
+            for (var index = 0; index < results.length; index++) {
+                var element = results[index];
+                listItems += "<li> " +
+                    "<img class='thumbnail' alt='image' src='" + element.thumbnail + "'/>" +
+                    "<div class='text-content'>" +
+                    "<p class='title'>" + element.title + "</p>" +
+                    "<p class='ingredients'>Ingredients:" + element.ingredients + "</p>" +
+                    "</div>" +
+                    "<div  class='bookmark'>" +
+                    "<button class='btn success' onclick=bookmarkRecipe(" + index + ")> Bookmark </button></div> </li>";
+            };
+            $("#recipes").html(listItems);
+        },
+        error: function(error) {
+            $("#recipes").html("<li>No recipes found.</li>");
+        }
+    });
+}
+
+
+queryAPI(api);
+
+function bookmarkRecipe(index) {
+    if (index > -1) {
+        var recipe = results[index];
+        var recipes = localStorage.getItem("recipes");
+        if (recipes != null) {
+            recipes = JSON.parse(recipes);
+        } else {
+            recipes = [];
+        }
+        recipes.push(recipe);
+        localStorage.setItem("recipes", JSON.stringify(recipes));
+        alert("Item has been bookmarked succeesfully.");
+    }
+}

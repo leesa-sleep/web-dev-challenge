@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Recipe Puppy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+
+<body>
+    <header>
+        <ul class="navigation">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="bookmark.html">Bookmarks</a></li>
+        </ul>
+    </header>
+    <section class="main-content">
+        <h1 id="main_title">Recipe Puppy</h1>
+        <div>
+            <input placeholder="Type in ingradients" type="search" id="ingredient" class="text-input" />
+            <input placeholder="Type in query" type="search" id="query" class="text-input" />
+            <input placeholder="Type in page nubmer" type="search" id="page_number" class="text-input" />
+            <button class="btn search" onclick="search()">Serach</button>
+            <ul id="recipes">
+
+            </ul>
+        </div>
+
+    </section>
+    <script src="../js/jquery-3.2.1.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+
+</html>
