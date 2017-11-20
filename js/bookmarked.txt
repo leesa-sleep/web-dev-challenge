@@ -1,0 +1,42 @@
+getBookmarkedRecipes();
+
+function getBookmarkedRecipes() {
+    var data = $("#bookmarked_recipes");
+    var recipes = localStorage.getItem("recipes");
+    if (recipes != null && recipes.length > 0) {
+        recipes = JSON.parse(recipes);
+        var listItems = "";
+        for (var i = 0; i < recipes.length; i++) {
+            var element = recipes[i];
+            listItems += "<li> " +
+                "<img src='" + element.thumbnail + "'/>" +
+                "<div class='text-content'>" +
+                "<p class='title'>" + element.title + "</p>" +
+                "<p class='ingredients'>Ingredients:" + element.ingredients + "</p>" +
+                "</div>" +
+                "<div  class='bookmark'>" +
+                "<button class='btn remove' onclick=removeBookmark(" + i + ")> Remove </button></div> </li>";
+
+        }
+        data.html(listItems);
+    } else {
+        data.html("<li>No bookmared recipes found.</li>");
+    }
+}
+
+function removeBookmark(index) {
+    var recipes = localStorage.getItem("recipes");
+    if (recipes != null) {
+        recipes = JSON.parse(recipes);
+        recipes.splice(index, 1);
+        if (recipes.length > 0) {
+            localStorage.setItem("recipes", JSON.stringify(recipes));
+        } else {
+            localStorage.removeItem("recipes");
+        }
+        alert("Recipe has been removed successfully.");
+        getBookmarkedRecipes();
+    } else {
+        alert("You haven't bookmared any recipe.");
+    }
+}
