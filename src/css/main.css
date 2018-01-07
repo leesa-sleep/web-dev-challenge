@@ -1,0 +1,36 @@
+body {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+.jumbotron {
+    margin-bottom: 0;
+    background-color: #fff;
+}
+.card {
+    float: left;
+    width: 33.333%;
+    padding: .75rem;
+    margin-bottom: 2rem;
+    border: 0;
+}
+.badge{
+    margin: 0.2em;
+}
+.card-image-overlay {
+    position: absolute;
+    right: 0;
+    left: 0;
+    padding: 1rem;
+}
+.bg-transparent-dark{
+    background-color: #ffffff8c;
+}
+.title-text-color{
+    color: #9c27b0;
+}
+.add-favorite{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 1rem;
+}
