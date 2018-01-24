@@ -1,0 +1,30 @@
+/*!
+ * Start Bootstrap - Shop Item (https://startbootstrap.com/template-overviews/shop-item)
+ * Copyright 2013-2017 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-shop-item/blob/master/LICENSE)
+ */
+
+body {
+  padding-top: 54px;
+}
+.row.search{
+    padding: 20px;
+}
+
+.box{
+	display: flex;
+	}
+	.box.end, .box-end{
+		justify-content: flex-end;
+	}
+	.box.start, .box-start{
+		justify-content: flex-start;
+	}
+	.box.middle, .box-middle{
+		align-items: center; 
+	}
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+}
