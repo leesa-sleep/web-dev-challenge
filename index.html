@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Happy Recipe</title>
+    <!-- Bootstrap core CSS -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="assets/css/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <style>
+    body {padding-top: 54px;}
+    .row.search{
+        padding: 20px;
+    }
+  .box{
+	display: flex;
+	}
+	.box.end, .box-end{
+		justify-content: flex-end;
+	}
+	.box.start, .box-start{
+		justify-content: flex-start;
+	}
+	.box.middle, .box-middle{
+		align-items: center;
+	}
+  .box.bottom, .box-bottom{
+		align-items: baseline ;
+	}
+  .search-results .row>div, .fav-items .row>div{
+    height: 100px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center center;
+    margin: 10px;
+    align-items: flex-end;
+    font-size: 12px;
+  }
+  .ellipse{
+      text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .fav-items{display:none;}
+  .cursor{cursor:pointer}
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+}
+    </style>
+  </head>
+
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">Happy Recipe</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3">
+          <h1 class="my-4 tab-header">Search</h1>
+          <div class="list-group">
+            <a href="#" class="list-group-item search-tab active">Search</a>
+            <a href="#" class="list-group-item fav-tab">Favorites</a>
+          </div>
+        </div>
+        <!-- /.col-lg-3 -->
+
+        <div class="col-lg-9">
+          <div class="card mt-4 root">
+            <div class="row fav-items">
+            <div class="card-body fav-results" style="margin-bottom: 60px; padding: 40px"></div>
+          </div>
+          <div class="row search-items" style="padding: 40px">
+              <div class="col-10">
+                <input type="search" class="form-control" id="searchInput" placeholder="search with keyword">
+            </div>
+             <div class="col-2">
+                    <button type="button" class="btn btn-default" id="searchBtn">Seach</button>
+            </div>
+            <div class="card-body search-results" style="margin-bottom: 60px;"></div>
+            </div>
+
+
+            <div class="card-body">
+
+            </div>
+          </div>
+          <!-- /.card -->
+
+          <!--div class="card card-outline-secondary my-4">
+            <div class="card-header">
+            </div>
+            <div class="card-body">
+            </div>
+          </div-->
+
+          <!-- /.card -->
+
+        </div>
+        <!-- /.col-lg-9 -->
+
+      </div>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark" style="padding: 1rem!important; position:fixed; bottom:0; width: 100%">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; happy recipe</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="assets/vendor/jquery/jquery.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script>
+    var _results = [], _fav=[];
+    $("#searchBtn").on('click', function(){
+      var _val = $('#searchInput').val();
+      if(!_val) return;
+      $.ajax({
+       type: "GET",
+       url:"http://www.recipepuppy.com/api/?q="+_val,
+       dataType: 'jsonp',
+       jsonpCallback: "localJsonpCallback"
+      });
+});
+
+      function localJsonpCallback(json) {
+        $('.search-results').html("<h6>No search found</h6>");
+        if (!json.Error) {
+            if(json.results && json.results.length>0){
+                var _row;
+                _results = json.results;
+               $('.search-results').html("");
+                $.each(json.results, function(ind, ele){
+                      if(ind % 5 == 0){
+                          _row = document.createElement('div');
+                          _row.setAttribute('class', 'row');
+                          $('.search-results').append(_row);
+                      }
+                  $(_row).append(`<div class="col-2 box" title="${ele.title}" data-ids='${ele.title.replace(/[^\w\S\d]/gi, '')}' style="background-image: url('${ele.thumbnail}')"><div class="col-10 ellipse"> ${ele.title}</div><div class="col-2 fav cursor" id="${ind}"><i class="fa fa-heart" aria-hidden="true"></i></div></div>`);
+                });
+            }
+        }else {
+           console.log(json.Message);
+        }
+    }
+     $(document).on('click', '.fav', function(){
+         var successMsg = `<div class="alert alert-success">
+              <a href="#" class="close hide" data-dismiss="alert" aria-label="close" title="close">×</a>
+              <strong>Success!</strong> Added to to favorites.
+            </div>`;
+           var errorMsg= `<div class="alert alert-danger">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+              <strong>Danger!</strong> Item already exist in favorites.
+            </div>`;
+        $('.card.root .alert').remove();
+        var _id = parseInt($(this).attr('id'));
+        var _uniqueTitle= $(this).closest('[data-ids]').attr('data-ids');
+        if(_fav.length>0){
+          if(findByTitle(_fav, _uniqueTitle) == -1){
+            _fav.push(_results[_id]);
+            $('.card.root').prepend(successMsg);
+          }else{
+            $('.card.root').prepend(errorMsg);
+          }
+       }else{
+         _fav.push(_results[_id]);
+         $('.card.root').prepend(successMsg);
+       }
+       //console.log(_fav);
+     });
+     function findByTitle(arr, title){
+       var flag = -1;
+        for(var i=0; i<arr.length; i++){
+                if(arr[i].title.replace(/[^\w\S\d]/gi, '') == title) {
+                  flag = 1; break;
+                }
+        }
+       return flag;
+     }
+     $('.list-group-item.search-tab').on('click', function(){
+       $(this).addClass('active'); $('.fav-tab').removeClass('active');
+       $('.search-items').show(); $('.fav-items').hide();
+       $('.tab-header').html('Search');
+        $('.card.root .alert').remove();
+     });
+      $('.list-group-item.fav-tab').on('click', function(){
+         $(this).addClass('active'); $('.search-tab').removeClass('active');
+        $('.search-items').hide(); $('.fav-items').show();
+         $('.card.root .alert').remove();
+        $('.fav-results').html('<h6>No favorites available</h6>');
+        if(_fav.length==0) return;
+        $('.fav-results').html(''); $('.tab-header').html('Favorites');
+        var _row;
+        $.each(_fav, function(ind, ele){
+                        if(ind % 5 == 0){
+                            _row = document.createElement('div');
+                            _row.setAttribute('class', 'row');
+                            $('.fav-results').append(_row);
+                        }
+                    $(_row).append(`<div class="col-2 box" title="${ele.title}" data-ids='${ele.title.replace(/[^\w\S\d]/gi, '')}' style="background-image: url('${ele.thumbnail}')"><div class="col-10 ellipse"> ${ele.title}</div><div class="col-2 fav cursor" id="${ind}"><i class="fa fa-trash" aria-hidden="true"></i></div></div>`);
+        });
+     });
+    </script>
+  </body>
+
+</html>
