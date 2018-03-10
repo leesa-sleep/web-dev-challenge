@@ -1,0 +1,193 @@
+body {
+    font-family: Arial;
+}
+
+.recipesSection {
+    max-width: 66%;
+    margin: 0 auto;
+}
+
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+    width: 50%;
+}
+
+.tab button:hover {
+    background-color: #ddd;
+}
+
+.tab button.active {
+    background-color: #ccc;
+}
+
+.tabcontent {
+    display: none;
+    margin-top: 30px;
+}
+
+.tabcontent.active {
+    display: block;
+}
+
+.searchSection {
+    position: relative;
+}
+
+.searchInput {
+    width: 85%;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('images/searchicon.png');
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    border-radius: 4px;
+}
+
+.searchInput:focus {
+    outline: none;
+}
+
+.searchRecipeButton {
+    height: 46px;
+    -webkit-appearance: initial;
+    background: white;
+    vertical-align: top;
+    width: 14%;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.searchRecipeButton:focus {
+    outline: none;
+}
+
+.suggestionsList {
+    list-style: none;
+    position: absolute;
+    padding: 0;
+    top: 46px;
+    margin: 0;
+    left: 0;
+    text-align: left;
+    width: 85%;
+}
+
+.suggestionsList li {
+    padding: 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    background: aliceblue;
+}
+
+.recipesResults {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.recipe {
+    width: 30.5%;
+    background: brown;
+    color: white;
+    margin-right: 4%;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+}
+
+.recipe.isFavourite .addToFavBtn {
+    display: none;
+}
+
+.recipe.isFavourite .addedToFavBtn {
+    display: block;
+}
+
+#Favourites .recipe.isFavourite  {
+    display: block;
+}
+
+#Favourites .recipe  {
+    display: none;
+}
+
+.recipe:nth-child(3n) {
+    margin-right: 0;
+}
+
+.recipe img {
+    width: 100%;
+}
+
+.recipe p {
+    padding-left: 10px;
+    display: inline-block;
+}
+
+.recipe p:last-child {
+    margin: 0;
+}
+
+.addToFavBtn, .addedToFavBtn {
+    float: right;
+    margin-right: 5px;
+    -webkit-appearance: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.addedToFavBtn {
+    display: none;
+}
+
+#Favourites .recipesResults .addToFavBtn {
+    display: none;
+}
+
+#Favourites .recipesResults .addedToFavBtn {
+    display: block;
+}
+
+@media only screen and (max-width: 767px) {
+    .recipesSection {
+        max-width: 100%;
+    }
+
+    .tab button {
+        font-size: 15px;
+    }
+
+    .searchRecipeButton {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .searchInput {
+        width: 100%;
+    }
+
+    .recipe {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .suggestionsList {
+        width: 100%;
+    }
+}
