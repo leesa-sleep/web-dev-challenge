@@ -1,9 +1,10 @@
 body {
     font-family: Arial;
+    margin: 0;
 }
 
 .recipesSection {
-    max-width: 66%;
+    max-width: 50%;
     margin: 0 auto;
 }
 
@@ -108,7 +109,7 @@ body {
     color: white;
     margin-right: 4%;
     margin-bottom: 30px;
-    padding-bottom: 10px;
+    padding-bottom: 20px;
 }
 
 .recipe.isFavourite .addToFavBtn {
@@ -127,17 +128,16 @@ body {
     display: none;
 }
 
-.recipe:nth-child(3n) {
-    margin-right: 0;
-}
-
 .recipe img {
     width: 100%;
+    height: 169px;
 }
 
 .recipe p {
     padding-left: 10px;
-    display: inline-block;
+    margin: 10px 0;
+    float: left;
+    clear: both;
 }
 
 .recipe p:last-child {
@@ -162,6 +162,46 @@ body {
 
 #Favourites .recipesResults .addedToFavBtn {
     display: block;
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1200px){
+    .recipesSection {
+        max-width: 70%;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .recipe:nth-child(3n) {
+        margin-right: 0;
+    }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1023px) {
+    .recipesSection {
+        max-width: 60%;
+    }
+
+    .recipe:nth-child(2n) {
+        margin-right: 0;
+    }
+    
+    .recipe {
+        width: 48%;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .recipesSection {
+        max-width: 80%;
+    }
+
+    .recipe {
+        width: 48%;
+    }
+
+    .recipe:nth-child(2n) {
+        margin-right: 0;
+    }
 }
 
 @media only screen and (max-width: 767px) {
@@ -189,5 +229,9 @@ body {
 
     .suggestionsList {
         width: 100%;
+    }
+
+    .recipe img {
+        height: auto;
     }
 }
